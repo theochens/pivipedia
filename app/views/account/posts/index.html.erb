@@ -1,0 +1,41 @@
+
+<div class="col-md-10 col-md-offset-1" id="edit_page">
+  <div class="row">
+    <div class="panel panel-default">
+      <div class="panel-heading text-center">
+        <h1>My Posts</h1>
+      </div>
+      <div class="panel-body">
+        <div class = "col-md-10 col-md-offset-1">
+  <table class="table">
+    <thead>
+      <tr>
+        <th> Image </th>
+        <th> Content </th>
+        <th> Subject </th>
+        <th> Last Update </th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+    
+    <tbody>
+      <% @posts.each do |post| %>
+        <tr>
+          <td> <%= link_to image_tag(post.image.url, width: 80), subject_post_path(post.subject, post) %> </td> 
+          <td> <%= simple_format(post.content) %> </td> 
+          <td> <%= link_to post.subject.title, post.subject %> </td> 
+          <td> <%= post.updated_at.to_s(:short) %> </td> 
+          <td> <%= link_to edit_subject_post_path(post.subject, post), 
+                          class: "btn btn-default" do %>
+                            <span class="glyphicon glyphicon-pencil"></span>
+                          <% end %> </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

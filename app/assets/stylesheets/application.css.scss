@@ -1,0 +1,108 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require 'masonry/transitions'
+ *= require social-share-button
+ */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body {
+  background: #E9E9E9;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 100;
+}
+
+nav {
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.22);
+  .container-fluid{
+    .navbar-brand {
+      color: #3399FF;
+      font-family:cursive;
+      font-size: 30px;
+    }
+  }
+}
+
+#subs {
+  margin: 0 auto;
+  width: 100%;
+  .box {
+    margin: 10px;
+    width: 370px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.22);
+    border-radius: 7px;
+
+    .substext{
+      margin:15px; 
+    }
+
+    #subsimg {
+      margin-left:15px;
+      margin-bottom:15px;
+      width: 100px;
+      height: 100px;
+      border-radius: 7px;
+    }
+  }
+}
+
+#posts {
+  margin: 0 auto;
+  width: 100%;
+  .box {
+    margin: 10px;
+    width: 250px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.22);
+    border-radius: 7px;
+  }
+}
+
+#edit_page {
+  .current_image{
+    img {
+    margin: 0 auto;
+    width: 70%;
+    display: block;
+    }
+  }
+}
+
+#post_show {
+  .panel-heading {
+    padding: 0;
+    img{
+      max-width: 100%;
+    }
+  }
+  .panel-body {
+    padding: 30px 2px;
+    h1 {
+      margin: 0 0 20px 0;
+    }
+  }
+  .panel-footer {
+    padding: 30px 15px;
+    p {
+      margin: 0;
+    }
+  }
+}
+
+#social {
+  padding: 0px 80px 0px 0px;
+}

@@ -1,0 +1,57 @@
+<div class="col-md-10 col-md-offset-1"
+
+  <div class = "col-md-12">
+    <h1> <%= @subject.title %> </h1>
+    <p> <%= simple_format(@subject.description) %> </p>
+    <hr>
+  </div>
+</div>
+
+<div class="text-center">
+  <p> <%= link_to new_subject_post_path(@subject) , 
+                  class: "btn btn-default" do %>
+                    <span class="glyphicon glyphicon-upload"></span>
+                  <% end %> 
+  </p>
+</div>
+
+
+<br>
+
+<div class="transitions-enabled" id="posts">
+    <% @posts.each do |post| %> 
+      <div class="box panel panel-default">
+        <p> 
+          <%= link_to image_tag(post.image.url,width:250), subject_post_path(post.subject, post) %>
+        </p>
+        <div class = "col-md-12 text-left">
+          <p> <%= simple_format(post.content) %> </p> 
+        </div>
+
+        <div class= "text-center">
+        <p> 
+          <% if current_user && post.editable_by?(current_user) %>
+            <%= link_to edit_subject_post_path(post.subject, post), 
+                        class: "btn btn-default" do %>
+                          <span class="glyphicon glyphicon-pencil"></span>
+                        <% end %> 
+          <% end %>  
+          <%= link_to like_subject_post_path(post.subject, post), 
+                      method: :put, 
+                      class: "btn btn-default" do %>
+                        <span class="glyphicon glyphicon-chevron-up"></span>
+                        <%= post.get_upvotes.size %>
+                      <% end %> 
+        </p>
+        </div>
+
+      </div>
+    <% end %>
+</div>
+
+<br>
+<br>
+
+<div class = "text-center">
+  <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
+</div>

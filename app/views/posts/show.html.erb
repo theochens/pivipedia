@@ -1,0 +1,51 @@
+
+<div class="col-md-10 col-md-offset-1" id="post_show">
+  <div class="row">
+    <div class="panel panel-default">
+
+      <div class="panel-heading text-center">
+          <%= link_to image_tag(@post.image.url), @post.image.url %>
+      </div>
+
+      <div class="panel-body">
+        <div class = "col-md-10 col-md-offset-1">
+          <h1> <%= simple_format(@post.author.name) %> </h1>
+          <p> <%= simple_format(@post.content) %> </p>
+          
+          <p> <%= link_to like_subject_post_path(@post.subject, @post), 
+                          method: :put, 
+                          class: "btn btn-default pull-right" do %>
+                            <span class="glyphicon glyphicon-chevron-up"></span>
+                            <%= @post.get_upvotes.size %>
+                          <% end %> </p>
+
+          <% if current_user && @post.editable_by?(current_user) %>
+            <p> <%= link_to edit_subject_post_path(@post.subject, @post), 
+                            class: "btn btn-default" do %>
+                              <span class="glyphicon glyphicon-pencil"></span>
+                            <% end %> 
+            </p>
+          <% end %>  
+        </div>
+      </div>
+
+      <div class="panel-footer">
+        <div class="row">
+          <div class="col-md-10 col-md-offset-1">
+            <div class="pull-right">
+              <p id="social"> <%= social_share_button_tag %> </p>
+            </div>
+            <p> <%= link_to like_subject_post_path(@post.subject, @post), 
+                          method: :put, 
+                          class: "btn btn-default" do %>
+                            <span class="glyphicon glyphicon-flag"></span>
+                          <% end %> </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
